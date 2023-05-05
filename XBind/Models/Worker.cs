@@ -7,39 +7,40 @@ using System.Threading.Tasks;
 
 namespace XBind.Models
 {
-    public class Worker:INotifyPropertyChanged//继承属性通知接口
+    public class Worker : INotifyPropertyChanged//继承属性通知接口
     {
         //Demo中，只实现Years的属性通知
         private string name;
-        public string Name 
+        public string MyName_First
         {
             get { return name; }
-            set {
+            set
+            {
                 name = value;
-                NotifyPropertyChanged("Name");
+                NotifyPropertyChanged("MyName_First");
             }
-            
+
         }
 
         private string age;
-        public string Age
+        public string MyAge_Years
         {
             get { return age; }
             set
             {
                 age = value;
-                NotifyPropertyChanged("Age");
+                NotifyPropertyChanged("MyAge_Years");
             }
         }
 
         private string years;
-        public string Work_Years
+        public string MyWork_Years
         {
             get => years;
             set
             {
                 years = value;
-                NotifyPropertyChanged("Work_Years");
+                NotifyPropertyChanged("MyWork_Years");
             }
         }
 

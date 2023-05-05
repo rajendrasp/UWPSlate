@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="XBind.View.ContactControl"
+    x:Name="MyContact"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XBind.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <ContentControl x:Name="MyContentContact">
+        <StackPanel Orientation="Vertical">
+            <Ellipse
+                                 Width ="140"
+                                 Height="140"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"
+                                 Fill="LightGray"
+                                 Margin="4,4,4,4"/>
+            <!-- Phase 2: TextBlock with contact name-->
+            <TextBlock
+                                   Margin="4,4,0,4"
+                                   Text="{x:Bind ViewModel.MyName,Mode=OneWay}" 
+                                   Style="{ThemeResource BodyTextBlockStyle}" 
+                                   HorizontalAlignment="Center"/>
+            <!-- Phase 3: TextBlock with contact job title-->
+            <TextBlock
+                                   Text="{x:Bind ViewModel.Position,Mode=OneWay}" 
+                                   Margin="4,4,0,4"
+                                   Style="{ThemeResource BodyTextBlockStyle}"
+                                   FontSize="12"
+                                   Foreground="Gray"
+                                   HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ContentControl>
+</UserControl>

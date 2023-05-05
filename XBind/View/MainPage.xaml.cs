@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SDKTemplate;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -30,34 +32,97 @@ namespace XBind
         {
             this.InitializeComponent();
             workers = new ObservableCollection<Worker>();
+
         }
 
         private void add_bt_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var work = new Worker
             {
-                Name = name_textBox.Text,
-                Age = age_textBox.Text,
-                Work_Years = years_textBox.Text
+                MyName_First = name_textBox.Text,
+                MyAge_Years = age_textBox.Text,
+                MyWork_Years = years_textBox.Text
             };
             workers.Add(work);
         }
 
         private async void change_bt_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (workers.Count > 0 )
+            if (workers.Count > 0)
             {
                 foreach (var item in workers)
                 {
-                    if (item.Name.ToLower() == search_textBox.Text.ToLower())
+                    if (item.MyName_First.ToLower() == search_textBox.Text.ToLower())
                     {
-                        item.Work_Years = newYears_textBox.Text;
+                        item.MyWork_Years = newYears_textBox.Text;
                     }
                     else
                     {
                         var message = new MessageDialog("Check no such person!");
                         await message.ShowAsync();
                     }
+                }
+            }
+        }
+
+        public List<Control> AllChildren(DependencyObject parent)
+        {
+            var _List = new List<Control>();
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var _Child = VisualTreeHelper.GetChild(parent, i);
+                if (_Child is Control)
+                    _List.Add(_Child as Control);
+                _List.AddRange(AllChildren(_Child));
+            }
+            return _List;
+        }
+
+        private void gird_view_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            GridViewItem item = args.ItemContainer as GridViewItem;
+
+            //Random rand = new Random();
+            //int randomNum = rand.Next(10, 99);
+            //if (item != null && randomNum > 50)
+            //{
+            //    item.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    item.IsEnabled = true;
+            //}
+
+            //await Task.Delay(5000);
+            //var _Container = gird_view.ContainerFromItem(item);
+            //if (_Container == null)
+            //{
+            //    return;
+            //}
+
+            var _Children = AllChildren(item);
+            if (_Children == null)
+            {
+                return;
+            }
+
+            var itemsToDisable = _Children
+                    .FindAll(x => x.Name.Equals("MyWorker") || x.Name.Equals("MyRPanel"));
+
+            Random rand = new Random();
+            int randomNum = rand.Next(10, 99);
+            if (item != null && randomNum > 50)
+            {
+                foreach (var itemToDisable in itemsToDisable)
+                {
+                    itemToDisable.IsEnabled = false;
+                }
+            }
+            else
+            {
+                foreach (var itemToDisable in itemsToDisable)
+                {
+                    itemToDisable.IsEnabled = true;
                 }
             }
         }
