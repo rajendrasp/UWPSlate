@@ -29,6 +29,7 @@ namespace SDKTemplate
         public string PhoneNumber { get; } = GeneratePhoneNumber();
         public string Biography { get; } = GenerateBiography();
         public bool IsShownAsEnabled { get; } = GenerateShownAsEnabled();
+        public string DisplayNameToolTip => MyName;
 
         private static bool GenerateShownAsEnabled()
         {

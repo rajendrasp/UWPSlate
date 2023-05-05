@@ -12,7 +12,17 @@
 
     <ContentControl x:Name="MyContentContact">
         <StackPanel Orientation="Vertical">
+            <ToolTipService.ToolTip>
+                <ToolTip 
+                    Content="{x:Bind ViewModel.DisplayNameToolTip, Mode=OneWay}" 
+                    PlacementTarget="{Binding ElementName=MyCircle}" 
+                    PlacementRect="0,0,94,100" 
+                    Placement="Right"
+                    VerticalOffset="0" 
+                    HorizontalOffset="0" />
+            </ToolTipService.ToolTip>
             <Ellipse
+                x:Name="MyCircle"
                                  Width ="140"
                                  Height="140"
                                  VerticalAlignment="Center"

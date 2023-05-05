@@ -32,40 +32,17 @@
             <Setter Property="MinHeight" Value="{ThemeResource GridViewItemMinHeight}" />
             <Setter Property="AllowDrop" Value="False" />
             <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
-            <Setter Property="FocusVisualMargin" Value="-2" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="GridViewItem">
                         <ListViewItemPresenter ContentTransitions="{TemplateBinding ContentTransitions}"
                         x:Name="Root"
                         Control.IsTemplateFocusTarget="True"
-                        FocusVisualMargin="{TemplateBinding FocusVisualMargin}"
-                        SelectionCheckMarkVisualEnabled="{ThemeResource GridViewItemSelectionCheckMarkVisualEnabled}"
-                        CheckBrush="{ThemeResource GridViewItemCheckBrush}"
-                        CheckBoxBrush="{ThemeResource GridViewItemCheckBoxBrush}"
-                        DragBackground="{ThemeResource GridViewItemDragBackground}"
-                        DragForeground="{ThemeResource GridViewItemDragForeground}"
-                        FocusBorderBrush="{ThemeResource GridViewItemFocusBorderBrush}"
-                        FocusSecondaryBorderBrush="{ThemeResource GridViewItemFocusSecondaryBorderBrush}"
-                        PlaceholderBackground="{ThemeResource GridViewItemPlaceholderBackground}"
-                        PointerOverBackground="{ThemeResource GridViewItemBackgroundPointerOver}"
-                        PointerOverForeground="{ThemeResource GridViewItemForegroundPointerOver}"
-                        SelectedBackground="{ThemeResource GridViewItemBackgroundSelected}"
-                        SelectedForeground="{ThemeResource GridViewItemForegroundSelected}"
-                        SelectedPointerOverBackground="{ThemeResource GridViewItemBackgroundSelectedPointerOver}"
-                        PressedBackground="{ThemeResource GridViewItemBackgroundPressed}"
-                        SelectedPressedBackground="{ThemeResource GridViewItemBackgroundSelectedPressed}"
                         Opacity="{ThemeResource ListViewItemDisabledThemeOpacity}"
                         DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}"
-                        DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}"
-                        ReorderHintOffset="{ThemeResource GridViewItemReorderHintThemeOffset}"
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        ContentMargin="{TemplateBinding Padding}"
-                        CheckMode="{ThemeResource GridViewItemCheckMode}"
-                        RevealBackground="{ThemeResource GridViewItemRevealBackground}"
-                        RevealBorderThickness="{ThemeResource GridViewItemRevealBorderThemeThickness}"
-                        RevealBorderBrush="{ThemeResource GridViewItemRevealBorderBrush}">
+                        ContentMargin="{TemplateBinding Padding}">
 
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
